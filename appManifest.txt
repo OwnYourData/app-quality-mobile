@@ -1,0 +1,18 @@
+{
+        "name":"App Vorlage",
+        "identifier":"eu.ownyourdata.template",
+        "type":"external",
+        "description":"ein R-Template für OYD Apps",
+        "permissions":[
+                "eu.ownyourdata.info:read",
+                "eu.ownyourdata.info:write",
+                "eu.ownyourdata.info:update",
+                "eu.ownyourdata.template:read",
+                "eu.ownyourdata.template:write",
+                "eu.ownyourdata.template:update",
+                "eu.ownyourdata.template:delete",
+                "eu.ownyourdata.template.log:read",
+                "eu.ownyourdata.template.log:write"]
+}
+base64-encoded manifest (https://www.base64encode.org/)
+ew0KICAgICAgICAibmFtZSI6IkFwcCBWb3JsYWdlIiwNCiAgICAgICAgImlkZW50aWZpZXIiOiJldS5vd255b3VyZGF0YS50ZW1wbGF0ZSIsDQogICAgICAgICJ0eXBlIjoiZXh0ZXJuYWwiLA0KICAgICAgICAiZGVzY3JpcHRpb24iOiJlaW4gUi1UZW1wbGF0ZSBmw7xyIE9ZRCBBcHBzIiwNCiAgICAgICAgInBlcm1pc3Npb25zIjpbDQogICAgICAgICAgICAgICAgImV1Lm93bnlvdXJkYXRhLmluZm86cmVhZCIsDQogICAgICAgICAgICAgICAgImV1Lm93bnlvdXJkYXRhLmluZm86d3JpdGUiLA0KICAgICAgICAgICAgICAgICJldS5vd255b3VyZGF0YS5pbmZvOnVwZGF0ZSIsDQogICAgICAgICAgICAgICAgImV1Lm93bnlvdXJkYXRhLnRlbXBsYXRlOnJlYWQiLA0KICAgICAgICAgICAgICAgICJldS5vd255b3VyZGF0YS50ZW1wbGF0ZTp3cml0ZSIsDQogICAgICAgICAgICAgICAgImV1Lm93bnlvdXJkYXRhLnRlbXBsYXRlOnVwZGF0ZSIsDQogICAgICAgICAgICAgICAgImV1Lm93bnlvdXJkYXRhLnRlbXBsYXRlOmRlbGV0ZSIsDQogICAgICAgICAgICAgICAgImV1Lm93bnlvdXJkYXRhLnRlbXBsYXRlLmxvZzpyZWFkIiwNCiAgICAgICAgICAgICAgICAiZXUub3dueW91cmRhdGEudGVtcGxhdGUubG9nOndyaXRlIl0NCn0=
