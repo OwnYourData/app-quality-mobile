@@ -4,8 +4,8 @@ shinyUI(
         tagList(
                 initStore("store", "oydStore"),
                 tags$script(
-                        'Shiny.addCustomMessageHandler("setPiaUrl", function(x) {      
-                        $("#returnPIAlink").attr("href", x);
+                        'Shiny.addCustomMessageHandler("setDesktopUrl", function(x) {      
+                        $("#desktoplink").attr("href", x);
                         })'),
                 appMobile()
         )

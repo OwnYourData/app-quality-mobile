@@ -1,5 +1,8 @@
 uiPiaConfig <- function(){
-        tabPanel('Verbindung zum Datentresor',
+        tabPanel(HTML(paste0('Verbindung zum Datentresor</a></li>',
+                             '<li><a id="desktoplink" href="', 
+                             desktopUrl, 
+                             '">zur Desktop Version')),
                  h3('Datentresor'),
                  textInput('pia_urlMobile', 'Adresse:'),
                  textInput('app_keyMobile', 'Identifier:'),
@@ -9,7 +12,8 @@ uiPiaConfig <- function(){
                  uiOutput('currentToken'),
                  conditionalPanel(
                          condition = "output.currentToken != ''",
-                         actionButton('disconnectPIA', 'Verbindung zu Datentresor trennen', 
+                         actionButton('disconnectPIA', 
+                                      'Verbindung zu Datentresor trennen', 
                                       icon('chain-broken'))
                  ),
                  br(),

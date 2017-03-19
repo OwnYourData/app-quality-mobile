@@ -2,7 +2,6 @@
 # last update: 2017-03-01
 
 currApp <- reactive({
-        input$p2next
         input$disconnectPIA
         app <- vector()
         piaMsg <- ''
@@ -47,11 +46,6 @@ currApp <- reactive({
                             style = 'danger', append = FALSE,
                             title = 'Verbindung zum Datentresor',
                             content = piaMsg)
-                createAlert(session, 'mailConfigStatus', 
-                            alertId = 'myMailConfigStatus',
-                            style = 'warning', append = FALSE,
-                            title = 'Fehlende Email Konfiguration',
-                            content = mailConfigMsg)
                 app <- vector()
         } else {
                 closeAlert(session, 'myPiaStatus')
@@ -61,9 +55,9 @@ currApp <- reactive({
 
 currData <- reactive({
         # list any input controls that effect currData
-        input$modalPiaUrl
-        input$modalPiaId
-        input$modalPiaSecret
+        input$pia_urlMobile
+        input$app_keyMobile
+        input$app_secretMobile
         input$saveInputTopic
         
         app <- currApp()
@@ -74,57 +68,6 @@ currData <- reactive({
         } else {
                 data.frame()
         }
-})
-
-observe({
-        if(!is.null(input$dateSelect)){
-                switch(input$dateSelect,
-                       '1'={ updateDateRangeInput(session, 'dateRange',
-                                                  start = as.Date(Sys.Date()-7),
-                                                  end = as.Date(Sys.Date())) },
-                       '2'={ updateDateRangeInput(session, 'dateRange',
-                                                  start = as.Date(Sys.Date() - months(1)),
-                                                  end = as.Date(Sys.Date())) },
-                       '3'={ updateDateRangeInput(session, 'dateRange',
-                                                  start = as.Date(Sys.Date() - months(2)),
-                                                  end = as.Date(Sys.Date())) },
-                       '4'={ updateDateRangeInput(session, 'dateRange',
-                                                  start = as.Date(Sys.Date() - months(6)),
-                                                  end = as.Date(Sys.Date())) },
-                       '5'={ updateDateRangeInput(session, 'dateRange',
-                                                  start = as.Date(paste(year(Sys.Date()),'1','1',sep='-')),
-                                                  end = as.Date(paste(year(Sys.Date()),'12','31',sep='-'))) },
-                       '6'={ updateDateRangeInput(session, 'dateRange',
-                                                  start = as.Date(Sys.Date() - months(12)),
-                                                  end = as.Date(Sys.Date())) },
-                       '10'={ data <- currData() },
-                       {})
-        }
-})
-
-
-currDataSelect <- reactive({
-        data <- currData()
-        if(nrow(data) == 0) {
-                createAlert(session, 'dataStatus', alertId = 'myDataStatus',
-                            style = 'warning', append = FALSE,
-                            title = 'Keine Daten im gewählten Zeitfenster',
-                            content = 'Für das ausgewählte Zeitfenster sind keine Daten vorhanden.')
-                data <- data.frame()
-        } else {
-                data$dat <- as.POSIXct(data$date, 
-                                       format='%Y-%m-%d')
-                dataMin <- min(data$dat, na.rm=TRUE)
-                dataMax <- max(data$dat, na.rm=TRUE)
-                curMin <- as.Date(input$dateRange[1], '%d.%m.%Y')
-                curMax <- as.Date(input$dateRange[2], '%d.%m.%Y')
-                daterange <- seq(curMin, curMax, 'days')
-                data <- data[as.Date(data$dat) %in% daterange, ]
-                if(nrow(data)>0){
-                        closeAlert(session, 'myDataStatus')
-                }
-        }
-        data
 })
 
 currDataDateSelectTimestamp <- reactive({

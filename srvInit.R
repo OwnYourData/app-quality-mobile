@@ -57,6 +57,12 @@ observe({
                 output$currentToken <- renderText('')
         }
         appStart()
+        desktopUrl <- paste0(
+                desktopUrl, 
+                '?PIA_URL=', piaUrl,
+                '&APP_KEY=', appKey,
+                '&APP_SECRET=', appSecret)
+        session$sendCustomMessage(type='setDesktopUrl', desktopUrl)
 })
 
 output$connectError <- renderUI({
